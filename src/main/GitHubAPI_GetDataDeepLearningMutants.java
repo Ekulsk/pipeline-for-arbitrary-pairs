@@ -22,17 +22,29 @@ public class GitHubAPI_GetDataDeepLearningMutants {
 		String commitsFilePath = args[2];
 		String codeFolderPath = args[3];
 
-		String authToken = args[4];
+		String authFilePath = args[4];
 		int maximumNumberOfModifiedFiles = 5;
 		
 		File commitsFile = new File(commitsFilePath);
 		File outputFile = new File(outputFilePath);
 		PrintWriter pw = new PrintWriter(outputFile);
-		
+		String authToken= "";
+		File authFile = new File(authFilePath);
+		if (authFile.isFile() )
+		{
+			try (BufferedReader br = new BufferedReader(new FileReader(authFile))) {
+				String line = br.readLine();
+				authToken=line;
+			}
+		}
 		int requestsDone = 0;
-		
+ 		if(commitsFile.isFile()) 
+			System.out.println("commit file is file");	
+		if (commitsFile.getName().endsWith(".csv"))
+			System.out.println("ends with csv");    
 		if (commitsFile.isFile() && commitsFile.getName().endsWith(".csv")) {
 			System.out.println("mining " + commitsFile.getName() + " file");
+
 			try (BufferedReader br = new BufferedReader(new FileReader(commitsFile))) {
 				for (String line; (line = br.readLine()) != null;) {
 					requestsDone++;
