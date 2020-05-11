@@ -1,0 +1,8 @@
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/commit/CommitAnalyzer.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/FilePair.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/main/Main.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/utility/FileUtility.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/export/ChangeExporter.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/MethodPair.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/ChangeExtractor.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/java/extractor/basic.java

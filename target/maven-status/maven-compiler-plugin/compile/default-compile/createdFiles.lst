@@ -1,0 +1,9 @@
+extractor/ChangeExtractor.class
+extractor/export/ChangeExporter.class
+extractor/commit/CommitAnalyzer.class
+extractor/FilePair.class
+extractor/basic.class
+extractor/utility/FileUtility$1.class
+extractor/MethodPair.class
+extractor/main/Main.class
+extractor/utility/FileUtility.class
