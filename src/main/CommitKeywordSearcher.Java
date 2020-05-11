@@ -15,7 +15,7 @@ import utility.Utility;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
-public class ImprovedBugFixingCommits {
+public class CommitKeywordSearcher {
 
 	/*
 	 * * Sample usage: (in mine-bug-fixing-commits base directory)
