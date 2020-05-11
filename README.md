@@ -19,7 +19,7 @@ Input:
 
   If done correctly, this should return a series of archives in the format YYY-MM-DD-#.json.gz
   
-**Step 2: Improved Identify Bug Fixing Commit.**
+**Step 2: Commit Keyword Searcher.**
   These archives will be scoured for various keywords.
   
   Output:
@@ -50,7 +50,7 @@ Input:
 -    Argument 5: Path to your github authorization string
 
   sample bash input:
-    `java -cp target/change-extractor-0.1.jar:lib/gson-2.8.6.jar main.GitHubAPI_GetDataDeepLearningMutants subdir/identify-output.csv ~/github-archive/ keywords/bugfixes.csv github.auth`
+    `java -cp target/change-extractor-0.1.jar:lib/gson-2.8.6.jar main.GitHubAPI_GetDataDeepLearningMutants /usr/bin/curl subdir/deep-learning-output.csv subdir/code-sets/ subdir/identify-output.csv github.auth`
   
   Ideally this should return a file system filled with java files, labeled before and after.
   
