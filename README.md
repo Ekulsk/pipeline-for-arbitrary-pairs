@@ -43,14 +43,27 @@ Input:
 
 Output:
 -    Argument 2: The output csv.
--    Argument 3: The output folder that will contain the filepath.
+-    Argument 3: The output folder that will contain the filepath. **make sure this ends with a /, or they will not be placed in the same directory**
 
 Input:
 -    Argument 4: The path to the output of the previous step.
--    Argument 5: Path to your github authorization string
+-    Argument 5: Path to your github authorization string. go to https://github.com/settings/tokens and copy your token into a file.
 
   sample bash input:
     `java -cp target/change-extractor-0.1.jar:lib/gson-2.8.6.jar main.GitHubAPI_GetDataDeepLearningMutants /usr/bin/curl subdir/deep-learning-output.csv subdir/code-sets/ subdir/identify-output.csv github.auth`
   
   Ideally this should return a file system filled with java files, labeled before and after.
   
+**Step 4: Create Arbitrary Keyword Pairs**
+  On this step, you will be transforming the java collection into something a bit more readable.
+  
+  Input : 
+  - Argument 1: The root folder of the previous output.
+  
+  Output : 
+  - Argument 2: Output directory for pairs.
+  
+  sample bash input:
+    `java -cp target/change-extractor-0.1.jar:lib/gumtree-spoon-ast-diff-1.2.jar extractor.main.Main subdir/code-sets/ subdir/pairs/`
+
+This should leave you with a filesystem of pairs
