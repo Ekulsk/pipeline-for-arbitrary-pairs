@@ -12,7 +12,7 @@ If you want to recompile, please use " mvn install "
 -      Note: Github API changes. To my understanding, it's risky to go before 2018, and the hard limit is 2015
 
   sample bash input:
-    `java -cp target/change-extractor-0.1.jar main.DownloadArchives /usr/bin/wget ~/github-archive/ 2020-01-01 2020-02-01`
+    `java -cp target/pipeline-for-arbitrary-pairs-0.1.jar main.DownloadArchives /usr/bin/wget ~/github-archive/ 2020-01-01 2020-02-01`
 
   If done correctly, this should return a series of archives in the format YYY-MM-DD-#.json.gz
   
@@ -24,7 +24,7 @@ If you want to recompile, please use " mvn install "
 -    Argument 3: Output csv - A file containing the directions to each commit with relevant information.
 
   sample bash input:
-    `java -cp target/change-extractor-0.1.jar:lib/gson-2.8.6.jar main.CommitKeywordSearcher ~/github-archive/ keywords/bugfixes.csv subdir/identify-output.csv`
+    `java -cp target/pipeline-for-arbitrary-pairs-0.1.jar:lib/gson-2.8.6.jar main.CommitKeywordSearcher ~/github-archive/ keywords/bugfixes.csv subdir/identify-output.csv`
     
   Ideally it should return a single csv file containing unintelligible strings of characters followed by github links.
 
@@ -38,7 +38,7 @@ If you want to recompile, please use " mvn install "
 -    Argument 5: Path to your github authorization string. go to https://github.com/settings/tokens and copy your token into a file.
 
   sample bash input:
-    `java -cp target/change-extractor-0.1.jar:lib/gson-2.8.6.jar main.GitHubAPI_GetDataDeepLearningMutants /usr/bin/curl subdir/identify-output.csv subdir/deep-learning-output.csv subdir/code-sets/ github.auth`
+    `java -cp target/pipeline-for-arbitrary-pairs-0.1.jar:lib/gson-2.8.6.jar main.GitHubAPI_GetDataDeepLearningMutants /usr/bin/curl subdir/identify-output.csv subdir/deep-learning-output.csv subdir/code-sets/ github.auth`
   
   Ideally this should return a file system filled with java files, labeled before and after.
   
@@ -49,6 +49,6 @@ If you want to recompile, please use " mvn install "
   - Argument 2: Output directory for pairs.
   
   sample bash input:
-    `java -cp target/change-extractor-0.1.jar:lib/gumtree-spoon-ast-diff-1.2.jar extractor.main.Main subdir/code-sets/ subdir/pairs/`
+    `java -cp target/pipeline-for-arbitrary-pairs-0.1.jar:lib/gumtree-spoon-ast-diff.jar extractor.main.Main subdir/code-sets/ subdir/pairs/`
 
 This should leave you with a filesystem of pairs
