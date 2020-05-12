@@ -121,7 +121,10 @@ public class GitHubAPI_GetDataDeepLearningMutants {
 				}
 			}
 		}
-
+		else{
+			
+			                        System.out.println("Please ensure the commit is a csv and is your second argument");
+		}
 		pw.close();
 
 	}

@@ -41,17 +41,23 @@ public class ChangeExtractor {
 		//Compare files
 		AstComparator  comp = new AstComparator();
 		try {
+			System.out.println("prediff");
 			diff = (DiffImpl) comp.compare(new File(fileBefore), new File(fileAfter));
+		        System.out.println("premap");    
+			setMappings();
+	                System.out.println("prechange");    
+			changedMethods = extractChangedMethods();
+			System.out.println("postchange");    
 		} catch (Exception e) {
-			System.out.println("ERROR while computing the DIFF");
+			System.out.println("ERROR while computing the DIFF"+e);
 			return null;
 		} catch(StackOverflowError t) {
 			System.out.println("ERROR while computing the DIFF (StackOverflow)");
 			return null;
-        }
+        	}
 
-		setMappings();
-		changedMethods = extractChangedMethods();
+//		setMappings();
+//		changedMethods = extractChangedMethods();
 		
 		return changedMethods;
 	}
@@ -61,7 +67,7 @@ public class ChangeExtractor {
 
 		Map<MethodPair, List<Operation>> changedMethods = new HashMap<>();
 		List<Operation> operations = diff.getAllOperations();
-
+		System.out.println("???.");
 		for(Operation op : operations) {
 
 			if(problematicOpration(op)) {

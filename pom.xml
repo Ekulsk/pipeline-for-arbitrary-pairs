@@ -23,8 +23,8 @@
 	    <artifactId>gumtree-spoon-ast-diff</artifactId>
 	    <scope>system</scope>
 
-	             <version>1.2</version>
-	    <systemPath>${basedir}/lib/gumtree-spoon-ast-diff-1.2.jar</systemPath>
+	             <version>1.24</version>
+	    <systemPath>${basedir}/lib/gumtree-spoon-ast-diff.jar</systemPath>
    </dependency> 
   <dependency>
             <groupId>com.google.code.gson</groupId>

@@ -18,6 +18,7 @@
 /scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/utility/Utility.java
 /scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/parser/bean/Commit.java
 /scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/parser/bean/Payload.java
+/scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/CommitKeywordSearcher.java
 /scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/main/DownloadArchives.java
 /scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/extractor/commit/CommitAnalyzer.java
 /scratch1/lucca/source-code-translation/source-code-translation/change-extractor/src/utility/jsonBean/CommitJsonObject.java

@@ -35,16 +35,22 @@ public class CommitAnalyzer {
 			e.printStackTrace();
 		}
 		
-		
+		int i =0;	
 		for(Path commitFolder : commitFolders) {
+			 i++;
+			 System.out.println("commit"+i);
 			System.out.println("Commit: " + commitFolder.getFileName() );
 			
 			String preFolder = commitFolder.toString()+"/P_dir/";
 			String afterFolder = commitFolder.toString()+"/F_dir/";
-			
+			File preDir = new File(preFolder);
+			File afterDir = new File(afterFolder);
+			if (!preDir.isDirectory()||!afterDir.isDirectory()){
+		          continue;
+			}	  
 			List<File> preJavaFiles = FileUtility.listJavaFiles(preFolder);	
 			List<File> afterJavaFiles = FileUtility.listJavaFiles(afterFolder);
-		
+
 			System.out.println("Files Pre: "+preJavaFiles.size());
 			System.out.println("Files After: "+afterJavaFiles.size());
 			if(preJavaFiles.size() != afterJavaFiles.size()) {
@@ -65,7 +71,7 @@ public class CommitAnalyzer {
 				System.out.println("Change Extraction...");
 				ChangeExtractor extractor = new ChangeExtractor();
 				Map<MethodPair, List<Operation>> changedMethods = extractor.extractChanges(fp.getFileBefore().getAbsolutePath(), fp.getFileAfter().getAbsolutePath());
-				
+				 System.out.println("postextract...");
 				if(changedMethods != null && !changedMethods.isEmpty()) {
 					System.out.println("Change Export...");
 					ChangeExporter exporter = new ChangeExporter(changedMethods);
@@ -73,10 +79,11 @@ public class CommitAnalyzer {
 					exporter.exportChanges(outDir);
 					fileID++;
 				}
-
+				 System.out.println("next fp");
 			}
+			 System.out.println("nextfilesystem");
 		}
-		
+		 System.out.println("donefilesystem");
 	}
 	
 	
