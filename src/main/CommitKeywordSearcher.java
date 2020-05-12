@@ -19,15 +19,15 @@ public class CommitKeywordSearcher {
 
 	/*
 	 * * Sample usage: (in mine-bug-fixing-commits base directory)
-	 * * java -cp target/classes/ main.IdentifyBugFixingCommits output.csv path/to/archive/ keywords.csv
+	 * * java -cp target/classes/ main.IdentifyBugFixingCommits path/to/archive/ keywords.csv output.csv
 	 * * Please use csv files for output and keywords.
 	 * **************************************************/
 	static ArrayList<String[]> keywords;
 	public static void main(String[] args) throws IOException {
 		
-		String outputFile = args[0];
-		String githubArchivePath = args[1];
-		String keywordFilePath = args[2]; // This is where the keywords have been stored.
+		String githubArchivePath = args[0];
+		String keywordFilePath = args[1]; // This is where the keywords have been stored.
+		String outputFile = args[2];
 		keyWordSet(keywordFilePath);
 						
 		File commitMessagesOfInterest = new File(outputFile);

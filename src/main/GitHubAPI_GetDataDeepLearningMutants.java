@@ -18,10 +18,9 @@ public class GitHubAPI_GetDataDeepLearningMutants {
 	public static void main(String[] args) throws IOException, InterruptedException {
 
 		String curlPath = args[0];
-		String outputFilePath = args[1];
-		String commitsFilePath = args[2];
+		String commitsFilePath = args[1];
+	 	String outputFilePath = args[2];
 		String codeFolderPath = args[3];
-
 		String authFilePath = args[4];
 		int maximumNumberOfModifiedFiles = 5;
 		

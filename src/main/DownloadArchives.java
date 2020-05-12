@@ -10,9 +10,9 @@ import crawler.Crawler;
 public class DownloadArchives {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		
-		String destinationPath = args[0];
-		String wgetPath = args[1];
+		String wgetPath = args[0];
+
+		String destinationPath = args[1];
 		//date in the format yyyy-mm-dd
 		String fromDate = args[2];
 		String toDate = args[3];
