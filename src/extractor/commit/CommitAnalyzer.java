@@ -36,17 +36,15 @@ public class CommitAnalyzer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		File output_csv = null;
-		PrintWriter out_pw = null;
-		if(!csv.isEmpty()) {
-			output_csv= new File(csv);
+		if (!csv.isEmpty()) {
+			File output_csv = new File(csv);
 			try {
-				out_pw = new PrintWriter(output_csv);
-			} catch (FileNotFoundException e1) {
+				output_csv.createNewFile();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
-		
 		
 		int i =0;	
 		for(Path commitFolder : commitFolders) {
@@ -89,7 +87,7 @@ public class CommitAnalyzer {
 					System.out.println("Change Export...");
 					ChangeExporter exporter = new ChangeExporter(changedMethods);
 					String outDir = out + "/" + commitFolder.getFileName() +"/"+ fileID+"/";
-					exporter.exportChanges(outDir,out_pw);
+					exporter.exportChanges(outDir,csv);
 					fileID++;
 				}
 				 System.out.println("next fp");
