@@ -47,8 +47,9 @@ If you want to recompile, please use " mvn install "
   
   - Argument 1: The root folder of the previous output.
   - Argument 2: Output directory for pairs.
+  - Argument 3: (optional) Output csv containing all method pairs.
   
   sample bash input:
-    `java -cp target/pipeline-for-arbitrary-pairs-0.1.jar:lib/gumtree-spoon-ast-diff.jar extractor.main.Main subdir/code-sets/ subdir/pairs/`
+    `java -cp target/pipeline-for-arbitrary-pairs-0.1.jar:lib/gumtree-spoon-ast-diff.jar extractor.main.Main subdir/code-sets/ subdir/pairs/ subdir/output.csv`
 
 This should leave you with a filesystem of pairs
