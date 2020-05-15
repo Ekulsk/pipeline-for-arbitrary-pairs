@@ -39,7 +39,7 @@ public class ChangeExporter {
 		//TODO Implement some filtering techniques
 	}
 	
-	public void exportChanges(String outDir) {
+	public void exportChanges(String outDir, PrintWriter pw) {
 		
 		int id = 0;
 		for(Entry<MethodPair, List<Operation>> e : changedMethods.entrySet()) {
@@ -50,6 +50,12 @@ public class ChangeExporter {
 			
 			exportMethodPair(e.getKey(), out);
 			exportOperations(e.getValue(), out);	
+		}
+		if (pw != null )
+		{
+			CtMethod methodBefore=e.getKey().getMethodBefore();
+			CtMethod methodAfter=e.getKey().getMethodBefore();
+			pw.println(outDir+"!beforeMethodStart<"+methodBefore.toString().getBytes()+">,afterMethodStart<"+ methodAfter.toString().getBytes()+">bothEnd!");
 		}
 		
 	}
