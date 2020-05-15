@@ -51,12 +51,13 @@ public class ChangeExporter {
 			
 			exportMethodPair(e.getKey(), out);
 			exportOperations(e.getValue(), out);	
-		}
-		if (pw != null )
-		{
-			CtMethod methodBefore=e.getKey().getMethodBefore();
-			CtMethod methodAfter=e.getKey().getMethodBefore();
-			pw.println(outDir+"!beforeMethodStart<"+methodBefore.toString().getBytes()+">,afterMethodStart<"+ methodAfter.toString().getBytes()+">bothEnd!");
+			
+			if (pw != null )
+			{
+				CtMethod methodBefore=e.getKey().getMethodBefore();
+				CtMethod methodAfter=e.getKey().getMethodBefore();
+				pw.println(outDir+"!beforeMethodStart<"+methodBefore.toString().getBytes()+">,afterMethodStart<"+ methodAfter.toString().getBytes()+">bothEnd!");
+			}
 		}
 		
 	}
