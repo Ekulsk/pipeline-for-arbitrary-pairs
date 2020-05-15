@@ -1,5 +1,7 @@
-# pipeline-for-arbitrary-pairs
+# pipeline-for-arbitrary-pairs:
 Given a date range and an arbitrary set of keywords, generate a set of pairs
+
+Authors: modified by Lucca Skon, original author: Michele Tufano
 
 If you want to recompile, please use " mvn install "
 
