@@ -24,7 +24,7 @@ public class CommitAnalyzer {
 	
 	
 	
-	public void analyzeCommits(String root, String out) {
+	public void analyzeCommits(String root, String out, String csv) {
 		
 		List<Path> commitFolders = null;
 		try {
@@ -34,6 +34,16 @@ public class CommitAnalyzer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		File output_csv = null;
+		if(!csv.isEmpty()) {
+			output_csv= new File(csv);
+			try {
+				out_pw = new PrintWriter(output_csv);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
 		
 		int i =0;	
 		for(Path commitFolder : commitFolders) {
@@ -76,7 +86,7 @@ public class CommitAnalyzer {
 					System.out.println("Change Export...");
 					ChangeExporter exporter = new ChangeExporter(changedMethods);
 					String outDir = out + "/" + commitFolder.getFileName() +"/"+ fileID+"/";
-					exporter.exportChanges(outDir);
+					exporter.exportChanges(outDir,out_pw);
 					fileID++;
 				}
 				 System.out.println("next fp");
