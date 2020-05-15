@@ -1,9 +1,9 @@
 package extractor.export;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +40,7 @@ public class ChangeExporter {
 		//TODO Implement some filtering techniques
 	}
 	
-	public void exportChanges(String outDir, PrintWriter pw) {
+	public void exportChanges(String outDir, String csv) {
 		
 		int id = 0;
 		for(Entry<MethodPair, List<Operation>> e : changedMethods.entrySet()) {
@@ -52,11 +52,25 @@ public class ChangeExporter {
 			exportMethodPair(e.getKey(), out);
 			exportOperations(e.getValue(), out);	
 			
-			if (pw != null )
+			if (!csv.isEmpty())
 			{
-				CtMethod methodBefore=e.getKey().getMethodBefore();
-				CtMethod methodAfter=e.getKey().getMethodBefore();
-				pw.println(outDir+"!beforeMethodStart<"+methodBefore.toString().getBytes()+">,afterMethodStart<"+ methodAfter.toString().getBytes()+">bothEnd!");
+				try {
+					Files.write(Paths.get(csv), (outDir+",!beforeMethodStart<").getBytes(), StandardOpenOption.APPEND);
+					List<String> linesBefore = Files.readAllLines(Paths.get(out+METHOD_BEFORE));
+					for (String b : linesBefore) {
+						Files.write(Paths.get(csv), b.getBytes(), StandardOpenOption.APPEND);
+					}
+					Files.write(Paths.get(csv), ">,afterMethodStart<".getBytes(), StandardOpenOption.APPEND);
+					List<String> linesAfter = Files.readAllLines(Paths.get(out+METHOD_AFTER));
+					for (String a : linesAfter) {
+						Files.write(Paths.get(csv), a.getBytes(), StandardOpenOption.APPEND);
+					}
+					Files.write(Paths.get(csv), ">bothend!\n".getBytes(), StandardOpenOption.APPEND);
+									
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 		
