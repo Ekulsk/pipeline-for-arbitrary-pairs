@@ -54,17 +54,24 @@ public class ChangeExporter {
 			
 			if (!csv.isEmpty())
 			{
-				try {
+				try {//The commented out lines are single-line versions of the same concept.
 					Files.write(Paths.get(csv), (outDir+",!beforeMethodStart<").getBytes(), StandardOpenOption.APPEND);
-					List<String> linesBefore = Files.readAllLines(Paths.get(out+METHOD_BEFORE));
-					for (String b : linesBefore) {
-						Files.write(Paths.get(csv), b.getBytes(), StandardOpenOption.APPEND);
-					}
+					CtMethod beforeMethod = e.getKey().getMethodBefore();
+					CtMethod afterMethod = e.getKey().getMethodAfter();
+					/*	List<String> linesBefore = Files.readAllLines(Paths.get(out+METHOD_BEFORE));
+					 *for (String b : linesBefore) {
+					 *Files.write(Paths.get(csv), b.getBytes(), SandardOpenOption.APPEND);
+					 *}
+					 ************************************************************************/
+					Files.write(Paths.get(csv), afterMethod.toString().getBytes(), StandardOpenOption.APPEND);
 					Files.write(Paths.get(csv), ">,afterMethodStart<".getBytes(), StandardOpenOption.APPEND);
-					List<String> linesAfter = Files.readAllLines(Paths.get(out+METHOD_AFTER));
-					for (String a : linesAfter) {
-						Files.write(Paths.get(csv), a.getBytes(), StandardOpenOption.APPEND);
-					}
+					Files.write(Paths.get(csv), beforeMethod.toString().getBytes(), StandardOpenOption.APPEND);
+					/*List<String> linesAfter = Files.readAllLines(Paths.get(out+METHOD_AFTER));
+					 * for (String a : linesAfter) {
+					 *  Files.write(Paths.get(csv), a.getBytes(), StandardOpenOption.APPEND);
+					 *}
+					 ***********************************************************************/
+
 					Files.write(Paths.get(csv), ">bothend!\n".getBytes(), StandardOpenOption.APPEND);
 									
 				} catch (IOException e1) {
