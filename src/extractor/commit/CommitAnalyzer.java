@@ -37,6 +37,7 @@ public class CommitAnalyzer {
 			e.printStackTrace();
 		}
 		File output_csv = null;
+		PrintWriter out_pw = null;
 		if(!csv.isEmpty()) {
 			output_csv= new File(csv);
 			try {
